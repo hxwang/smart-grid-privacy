@@ -5,7 +5,11 @@ using System.Text;
 
 namespace smart_grid_privacy.Algorithm
 {
-    class LS2
+    public class LS2: AlgBase
     {
+
+        public LS2() {
+            this.AlgType = AlgType.LS2;
+        }
     }
 }

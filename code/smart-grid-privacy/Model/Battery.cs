@@ -11,6 +11,7 @@ namespace smart_grid_privacy.Model
         public double MaximumChargeRate { get; private set; }
         public double MaximumDischargeRate { get; private set; }
 
+
         public double MaximumChargeAmount
         {
             get
@@ -34,6 +35,11 @@ namespace smart_grid_privacy.Model
             if (this.CurrentLevel - this.Capacity > 1e-3)
                 throw new ArgumentOutOfRangeException("Battery overflow!");
             
+        }
+
+
+        public Battery Clone() {
+            throw new NotImplementedException();
         }
 
         public void DisChargeBattery(double amount) {

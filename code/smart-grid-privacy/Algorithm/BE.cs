@@ -5,7 +5,10 @@ using System.Text;
 
 namespace smart_grid_privacy.Algorithm
 {
-    class BE
+    public class BE: AlgBase
     {
+        public BE() {
+            this.AlgType = AlgType.BE;
+        }
     }
 }

@@ -12,12 +12,26 @@ namespace smart_grid_privacy
         public double MaximumChargeRate { get; private set; }
         public double MaximumDischargeRate { get; private set; }
 
+        public int SimDays { get; private set; } //simulation days
+
+
+        public String InputDataFileName {get; private set;}
+        public int TimeSlotNum
+        {
+            get
+            {
+                return SimDays * 24 * 12;
+            }
+        }
+
         public Config() {
          
             this.TimeSlotLength = 5; //each time slot has 5 minutes
             this.Capacity = 500; //0.5 kWh, used by NILL paper
             this.MaximumChargeRate = 1000; //1000w/h, used by NILL paper
             this.MaximumDischargeRate = 1000; //1000w/h, used by NILL paper
+            this.SimDays = 3; 
+            this.InputDataFileName = @"..\..\..\..\data\3day_5min.txt";
         }
     }
 }

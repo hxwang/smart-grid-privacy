@@ -5,11 +5,11 @@ using System.Text;
 
 namespace smart_grid_privacy.Algorithm
 {
-    public class NILL: AlgBase
+    public enum  AlgType
     {
+        BE,
+        NILL,
+        LS2
 
-        public NILL() {
-            this.AlgType = AlgType.NILL;
-        }
     }
 }
