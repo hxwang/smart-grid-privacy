@@ -9,32 +9,37 @@ namespace smart_grid_privacy.Model
 {
     public class Workload
     {
-        private Config Config;
+        
         public List<double> ElectricDemand { get; private set; }
-        public List<double> ExternalDemand { get; private set; }
+        public List<double> ExternalPower { get; private set; }
 
 
         public Workload(Config config) {
             this.ElectricDemand = new List<double>();
-            this.ExternalDemand = new List<double>();
-            this.Config = config;
-            init();
+            this.ExternalPower = new List<double>();
+
+            ReadWorkloadsFromFile(config);
         }
 
 
-        public Workload Clone() {
-
-            throw new NotImplementedException();
+        /// <summary>
+        /// check with Huahua
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public Workload Clone(Config config) {
+            Workload workload = new Workload(config);
+            return workload;
+            
         }
 
-        public void init() {
-            ReadWorkloadsFromFile();       
-        }
 
 
-        public void ReadWorkloadsFromFile() {
-            using (var sr = new StreamReader(Config.InputDataFileName)) {
-                this.ElectricDemand = sr.ReadListColumn(Config.TimeSlotNum);
+
+        public void ReadWorkloadsFromFile(Config config)
+        {
+            using (var sr = new StreamReader(config.InputDataFileName)) {
+                this.ElectricDemand = sr.ReadListColumn(config.TimeSlotNum);
             }
         }
     }

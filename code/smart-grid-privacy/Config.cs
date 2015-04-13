@@ -16,6 +16,8 @@ namespace smart_grid_privacy
 
 
         public String InputDataFileName {get; private set;}
+        public String OutputDir { get; private set; }
+
         public int TimeSlotNum
         {
             get
@@ -27,11 +29,12 @@ namespace smart_grid_privacy
         public Config() {
          
             this.TimeSlotLength = 5; //each time slot has 5 minutes
-            this.Capacity = 500; //0.5 kWh, used by NILL paper
-            this.MaximumChargeRate = 1000; //1000w/h, used by NILL paper
-            this.MaximumDischargeRate = 1000; //1000w/h, used by NILL paper
+            this.Capacity = 0.5; //0.5 kWh, used by NILL paper
+            this.MaximumChargeRate = 1000; //1000w/h (by NILL paper), 500w/h (by BE paper)
+            this.MaximumDischargeRate = -1000; //1000w/h, used by NILL paper
             this.SimDays = 3; 
             this.InputDataFileName = @"..\..\..\..\data\3day_5min.txt";
+            this.OutputDir = @"..\..\..\..\data\simOutput\";
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulation\Simulator.cs" />
+    <Compile Include="Util\FileSaver.cs" />
     <Compile Include="Util\StreamReaderExtension.cs" />
   </ItemGroup>
   <ItemGroup />

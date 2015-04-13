@@ -12,7 +12,8 @@ namespace smart_grid_privacy
         static void Main(string[] args)
         {
             Config config = new Config();
-            testReadFile(config);
+            //testReadFile(config);
+
 
             Simulator sim = new Simulator(config);
             sim.runSim();
@@ -24,6 +25,7 @@ namespace smart_grid_privacy
             Workload wl = new Workload(config);
             List<double> electricityUsage = wl.ElectricDemand;
             Console.WriteLine("Electricity count = {0}, min ={1}, max={2}, avg = {3}", electricityUsage.Count, electricityUsage.Min(), electricityUsage.Max(), electricityUsage.Average());
+            electricityUsage.ForEach(e => Console.WriteLine(e));
         }
     }
 }

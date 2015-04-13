@@ -11,5 +11,10 @@ namespace smart_grid_privacy.Algorithm
         public LS2() {
             this.AlgType = AlgType.LS2;
         }
+
+        public override void DecideEnergy(int time)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

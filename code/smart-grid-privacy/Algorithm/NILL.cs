@@ -11,5 +11,10 @@ namespace smart_grid_privacy.Algorithm
         public NILL() {
             this.AlgType = AlgType.NILL;
         }
+
+        public override void DecideEnergy(int time)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
