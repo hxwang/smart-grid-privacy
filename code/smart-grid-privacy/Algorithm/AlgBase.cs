@@ -22,7 +22,7 @@ namespace smart_grid_privacy.Algorithm
         /// <summary>
         /// decide how much energy to extract from grid
         /// decide how much energy to charge/discharge from battery
-        /// update external energy, and battery state accordingly
+        /// update external energy, and battery State accordingly
         /// </summary>
         /// <param name="time"></param>
         public abstract void DecideEnergy(int time);

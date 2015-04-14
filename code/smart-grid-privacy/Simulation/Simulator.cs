@@ -21,7 +21,8 @@ namespace smart_grid_privacy.Simulation
             Battery bat = new Battery(this.Config);
             foreach (String algType in Enum.GetNames(typeof(AlgType)))
             {
-                if (algType.Equals(AlgType.BE.ToString()))
+                //if(algType.Equals(AlgType.BE.ToString()) )
+                if(algType.Equals(AlgType.NILL.ToString()))
                 {
                     var Alg = AlgFactory.CreateAlg(algType);
                     Alg.Workload = workload.Clone(this.Config);

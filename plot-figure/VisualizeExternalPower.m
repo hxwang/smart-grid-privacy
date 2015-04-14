@@ -19,7 +19,7 @@ set(axes1,'FontSize',30,'FontWeight','bold');
 
 %plot and set font, line type
 p = plot(time(:,1),data(:,1));
-set(p, 'Color', 'g', 'LineWidth', 3, 'linestyle','-');
+set(p, 'Color', 'b', 'LineWidth', 3, 'linestyle','-');
 
     
     
