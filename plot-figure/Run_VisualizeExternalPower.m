@@ -6,7 +6,7 @@ VisualizeExternalPower(dataFileName, timeFileName, AlgType)
 
 
 
-Alg = {'BE'; 'NILL'}
+Alg = {'BE'; 'NILL'; 'LS2'}
 
 for i = 1:1:size(Alg)
 AlgType = char(Alg(i,:));

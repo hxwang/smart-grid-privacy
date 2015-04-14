@@ -17,5 +17,13 @@ namespace smart_grid_privacy.Util
                 Instance = new Random();
             return Instance.Next(low, high);
         }
+
+
+        public static double GetRandomDouble() {
+
+            if (Instance == null)
+                Instance = new Random();
+            return Instance.NextDouble();
+        }
     }
 }

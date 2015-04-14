@@ -22,10 +22,10 @@ namespace smart_grid_privacy.Simulation
             foreach (String algType in Enum.GetNames(typeof(AlgType)))
             {
                 //if(algType.Equals(AlgType.BE.ToString()) )
-                if(algType.Equals(AlgType.NILL.ToString()))
+                //if(algType.Equals(AlgType.NILL.ToString()))
                 {
                     var Alg = AlgFactory.CreateAlg(algType);
-                    Alg.Workload = workload.Clone(this.Config);
+                    Alg.Workload = workload.Clone(workload);
                     Alg.Battery = bat.Clone(this.Config);
                     Alg.Init();
                    

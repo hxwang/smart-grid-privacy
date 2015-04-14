@@ -21,16 +21,20 @@ namespace smart_grid_privacy.Model
             ReadWorkloadsFromFile(config);
         }
 
-
+        public Workload() {
+            this.ElectricDemand = new List<double>();
+            this.ExternalPower = new List<double>();
+        }
         /// <summary>
         /// check with Huahua
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public Workload Clone(Config config) {
-            Workload workload = new Workload(config);
-            return workload;
-            
+        public Workload Clone(Workload other) {
+            Workload workload = new Workload();
+            workload.ElectricDemand = new List<double>(other.ElectricDemand);
+            workload.ExternalPower = new List<double>(other.ExternalPower);
+            return workload;          
         }
 
 
