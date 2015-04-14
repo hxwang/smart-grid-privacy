@@ -27,6 +27,8 @@ namespace smart_grid_privacy.Simulation
                     var Alg = AlgFactory.CreateAlg(algType);
                     Alg.Workload = workload.Clone(this.Config);
                     Alg.Battery = bat.Clone(this.Config);
+                    Alg.Init();
+                   
 
                     //TODO: for each time slot,  run the algorithm to decide the assignment of energy
                     for (int i = 0; i < Config.TimeSlotNum; i++)

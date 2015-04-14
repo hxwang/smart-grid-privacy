@@ -5,15 +5,21 @@ AlgType = 'Origin'
 VisualizeExternalPower(dataFileName, timeFileName, AlgType)
 
 
-dataFileName= '..\data\simOutput\BE_extEnergy.txt';
-AlgType = 'BE'
+
+Alg = {'BE'; 'NILL'}
+
+for i = 1:1:size(Alg)
+AlgType = char(Alg(i,:));
+dataFileName= strcat('..\data\simOutput\',AlgType,'_extEnergy.txt');
 VisualizeExternalPower(dataFileName, timeFileName, AlgType)
 
-dataFileName= '..\data\simOutput\BE_batteryPowerHist.txt';
-AlgType = 'BE-Battery-Power'
-VisualizeExternalPower(dataFileName, timeFileName, AlgType)
+AlgTypeName =strcat( AlgType,'-Battery-Power')
+dataFileName= strcat('..\data\simOutput\',AlgType,'_batteryPowerHist.txt');
+VisualizeExternalPower(dataFileName, timeFileName, AlgTypeName)
 
-dataFileName= '..\data\simOutput\BE_batteryEnergyListHist.txt';
-AlgType = 'BE-Battery-Energy'
-VisualizeExternalPower(dataFileName, timeFileName, AlgType)
+dataFileName= strcat('..\data\simOutput\', AlgType, '_batteryEnergyListHist.txt');
+AlgTypeName =strcat( AlgType,'-Battery-Energy')
+VisualizeExternalPower(dataFileName, timeFileName, AlgTypeName)
 
+
+end

@@ -17,7 +17,7 @@ namespace smart_grid_privacy.Algorithm
         public AlgType AlgType { get; protected set; }
         public double LastExternalWorkload { get; private set; }
 
-
+        public virtual void Init() { }
 
         /// <summary>
         /// decide how much energy to extract from grid

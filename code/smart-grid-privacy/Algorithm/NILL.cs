@@ -20,14 +20,15 @@ namespace smart_grid_privacy.Algorithm
 
         public NILL() {
             this.AlgType = AlgType.NILL;
-            init();
+           
         }
 
-        public void init() {
+        public override  void Init() {
             this.stateLow = 0.2*this.Battery.Capacity;
             this.stateHigh = 0.9 * this.Battery.Capacity;
             this.stateLowToStable = 0.8 * this.Battery.Capacity;
             this.CurrentState = State.low;
+            this.power = new double[3];
             power[(int)(State.low)] = this.Battery.MaximumChargeRate;
             this.Alpha = 0.5;
             this.Threshold = this.Battery.MaximumChargeRate*0.1;
@@ -35,7 +36,7 @@ namespace smart_grid_privacy.Algorithm
 
         public override void DecideEnergy(int time)
         {
-            double demandPower = this.Workload.ElectricDemand[0];
+            double demandPower = this.Workload.ElectricDemand[time];
             double batteryPower = 0;
             if (time == 0)
             {
@@ -59,6 +60,8 @@ namespace smart_grid_privacy.Algorithm
                 else if (CurrentState == State.high) {
                     UpdateHighStatePower(demandPower);
                     batteryPower = (power[(int)(State.high)] - demandPower);
+                    if (batteryPower < this.Battery.CurrMaximumDisChargeRate) batteryPower = this.Battery.CurrMaximumDisChargeRate;
+
                     if (batteryPower > 1e-3) {
                         throw new Exception("Should Discharge Battery!");
                     }
@@ -99,7 +102,7 @@ namespace smart_grid_privacy.Algorithm
         /// </summary>
         /// <param name="time"></param>
         public void UpdateStablePower(int time) {
-            var histAvgPower = this.Workload.ElectricDemand.GetRange(this.LastRecoverTime, time).Average();
+            var histAvgPower = this.Workload.ElectricDemand.GetRange(this.LastRecoverTime, time - this.LastRecoverTime).Average();
             this.power[(int)(State.stable)] = this.Alpha * histAvgPower + (1 - this.Alpha) * power[(int)(State.stable)];
         }
 
