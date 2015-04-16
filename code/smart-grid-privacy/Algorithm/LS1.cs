@@ -6,14 +6,28 @@ using smart_grid_privacy.Util;
 
 namespace smart_grid_privacy.Algorithm
 {
-    public class LS2: LS1
+    public class LS1 :AlgBase
     {
-       
+        public double BatteryParameter;
+        public int Multiple;
+        public double lowEnergyLine;
+        public double highEnergyLine;
+        public Boolean IsCharging;
+        public enum State { Low, Mid, High }
 
-        public LS2() {
-            this.AlgType = AlgType.LS2;
+
+        public LS1()
+        {
+            this.AlgType = AlgType.LS1;
         }
 
+        public override void Init()
+        {
+            this.BatteryParameter = Math.Min(this.Battery.MaximumChargeRate, -this.Battery.MaximumDischargeRate);
+            this.lowEnergyLine = 0.2 * this.Battery.Capacity;
+            this.highEnergyLine = 0.9 * this.Battery.Capacity;
+
+        }
 
         /// <summary>
         /// random choose charging/discharging when cannot maintain the same load level
@@ -40,7 +54,8 @@ namespace smart_grid_privacy.Algorithm
                 //the powerDemand is either too low or too high to maintain the same states
                 else if (demandPower <= (Multiple - 1) * BatteryParameter || demandPower >= (Multiple + 1) * BatteryParameter)
                 {
-                    if (this.Battery.CurrentLevel < (this.lowEnergyLine + this.highEnergyLine) / 2) IsCharging = true;
+                    double rnd = RandomGenerator.GetRandomDouble();
+                    if (rnd < 0.5) IsCharging = true;
                     else IsCharging = false;
                 }
 

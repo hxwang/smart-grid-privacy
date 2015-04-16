@@ -9,6 +9,7 @@ namespace smart_grid_privacy.Algorithm
     {
         BE,
         NILL,
+        LS1,
         LS2
 
     }

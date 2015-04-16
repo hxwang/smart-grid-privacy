@@ -47,6 +47,7 @@
     <Compile Include="Algorithm\AlgFactory.cs" />
     <Compile Include="Algorithm\AlgType.cs" />
     <Compile Include="Algorithm\BE.cs" />
+    <Compile Include="Algorithm\LS1.cs" />
     <Compile Include="Algorithm\LS2.cs" />
     <Compile Include="Algorithm\NILL.cs" />
     <Compile Include="Config.cs" />
