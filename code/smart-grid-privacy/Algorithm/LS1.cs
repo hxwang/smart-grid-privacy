@@ -58,7 +58,8 @@ namespace smart_grid_privacy.Algorithm
                     if (rnd < 0.5) IsCharging = true;
                     else IsCharging = false;
                 }
-
+                else if (diff > 0) IsCharging = true;
+                else IsCharging = false;
             }
 
             if (IsCharging)

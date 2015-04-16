@@ -43,6 +43,8 @@ namespace smart_grid_privacy.Algorithm
                     if (this.Battery.CurrentLevel < (this.lowEnergyLine + this.highEnergyLine) / 2) IsCharging = true;
                     else IsCharging = false;
                 }
+                else if (diff > 0) IsCharging = true;
+                else IsCharging = false;
 
             }
 

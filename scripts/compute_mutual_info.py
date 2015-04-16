@@ -8,10 +8,24 @@ def read_file(filename):
 	arr = numpy.load(filename)
 	return arr
 
+
+def transform_data_to_difference(real_filename, fake_filename):
+	real = numpy.loadtxt(real_filename).T
+	fake = numpy.loadtxt(fake_filename).T
+	real_diff = []
+	fake_diff = []
+	for i in range(1, len(real)):
+		real_diff.append( numpy.abs(real[i] - real[i-1]))
+		fake_diff.append( numpy.abs(fake[i] - fake[i-1]))
+		# fake_diff[i-1] = fake[i] - fake[i-1]
+
+	return real_diff, fake_diff
+
 def compute_discrete_prob(real_filename, fake_filename):
 	bin_num = 500
 
-	real = numpy.loadtxt(real_filename).T
+	real, fake = transform_data_to_difference(real_filename, fake_filename)
+	
 	# print 'real', real
 	real_bin = numpy.linspace(numpy.min(real),numpy.max(real),bin_num)
 	# print 'real_bin', real_bin
@@ -19,7 +33,7 @@ def compute_discrete_prob(real_filename, fake_filename):
 	real_digitize = numpy.digitize(real, real_bin)
 	# print 'real_digitize', real_digitize
 
-	fake = numpy.loadtxt(fake_filename).T
+	
 	# print fake
 	fake_bin = numpy.linspace(numpy.min(fake),numpy.max(fake),bin_num)
 	# print fake_bin
